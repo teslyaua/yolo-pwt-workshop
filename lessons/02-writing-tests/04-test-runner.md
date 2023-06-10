@@ -1,4 +1,5 @@
 # The Playwright Test runner
+
 > Structure and configure your tests.
 
 So far, we've only looked at the internals of a test run. But how can you control when and how your tests are run?
@@ -7,8 +8,8 @@ So far, we've only looked at the internals of a test run. But how can you contro
 
 Suppose your test files grow, you can always introduce a clean grouping using `test.describe`.
 
-```javascript
-const { test, expect } = require('@playwright/test');
+```typescript
+const { test, expect } = require("@playwright/test");
 
 test.describe("playwright", () => {
   test("has title", async ({ page }) => {
@@ -25,8 +26,8 @@ test.describe("playwright", () => {
 
 Playwright provides common test runner methods your might be already familiar with.
 
-```javascript
-const { test, expect } = require('@playwright/test');
+```typescript
+const { test, expect } = require("@playwright/test");
 
 test.describe("playwright", () => {
   test.beforeAll(async () => {
@@ -53,7 +54,6 @@ test.describe("playwright", () => {
     console.log("After tests");
   });
 });
-
 ```
 
 Fixtures such as `page` are isolated per test but keep their state in life cycle hooks such as `beforeEach` and `afterEach`. For example, you can log into a website in a `beforeEach` hook and all following tests will access encapsulated but logged in `page` objects.
@@ -71,8 +71,8 @@ When Playwright runs all your tests, there are multiple ways to configure single
 
 If you're focusing on a single test during development you can task the test runner to only run a single test.
 
-```javascript
-test.only('focus this test', async ({ page }) => {
+```typescript
+test.only("focus this test", async ({ page }) => {
   // Run only focused tests in the entire project.
 });
 ```
@@ -81,15 +81,18 @@ test.only('focus this test', async ({ page }) => {
 
 Don't run tests but mark them as `fixme` to look at them later.
 
-```javascript
+```typescript
 // skip an entire test and mark it as `fixme`
-test.fixme('test to be fixed', async ({ page }) => {
+test.fixme("test to be fixed", async ({ page }) => {
   // ...
 });
 
 // skip test depending on a condition and mark it as `fixme`
-test('broken in WebKit', async ({ page, browserName }) => {
-  test.fixme(browserName === 'webkit', 'This feature is not implemented on Mac yet');
+test("broken in WebKit", async ({ page, browserName }) => {
+  test.fixme(
+    browserName === "webkit",
+    "This feature is not implemented on Mac yet"
+  );
   // ...
 });
 ```
@@ -98,7 +101,7 @@ test('broken in WebKit', async ({ page, browserName }) => {
 
 Mark a test as slow and tripple the auto-waiting timeouts.
 
-```javascript
+```typescript
 test("has title", async ({ page, browserName }) => {
   test.slow(browserName === "webkit", "This feature is slow on Mac");
   // ...
@@ -109,15 +112,18 @@ test("has title", async ({ page, browserName }) => {
 
 Skip a test.
 
-```javascript
+```typescript
 // skip test entirely
-test.skip('broken test', async ({ page }) => {
+test.skip("broken test", async ({ page }) => {
   // ...
 });
 
 // skip test when it's run in webkit
-test('skip in WebKit', async ({ page, browserName }) => {
-  test.skip(browserName === 'webkit', 'This feature is not implemented for Mac');
+test("skip in WebKit", async ({ page, browserName }) => {
+  test.skip(
+    browserName === "webkit",
+    "This feature is not implemented for Mac"
+  );
   // ...
 });
 ```
@@ -126,7 +132,7 @@ test('skip in WebKit', async ({ page, browserName }) => {
 
 For longer and more complex tests, it might be valuable to add a third level of grouping - groups, tests and [test steps](https://playwright.dev/docs/api/class-test#test-step).
 
-```javascript
+```typescript
 test.describe("danube tests", () => {
   test("attach stuff to your test reports", async ({ page }, testInfo) => {
     let productName;
@@ -158,11 +164,14 @@ Additionally to the handy `test` methods you can also access and enrich the gath
 
 Provide additional test information with [`testInfo.attach()`](https://playwright.dev/docs/api/class-testinfo#test-info-attach).
 
-```javascript
-test('basic test', async ({ page }, testInfo) => {
-  await page.goto('https://playwright.dev');
+```typescript
+test("basic test", async ({ page }, testInfo) => {
+  await page.goto("https://playwright.dev");
   const screenshot = await page.screenshot();
-  await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
+  await testInfo.attach("screenshot", {
+    body: screenshot,
+    contentType: "image/png",
+  });
 });
 ```
 
@@ -176,7 +185,7 @@ test('basic test', async ({ page }, testInfo) => {
 
 It's also possible to add your own annotations to the test report.
 
-```javascript
+```typescript
 test("is logged in", async ({ loggedInPage }, testInfo) => {
   testInfo.annotations.push({
     type: "Some thing is a 🐟y here",

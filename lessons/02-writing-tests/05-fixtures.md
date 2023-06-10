@@ -1,11 +1,12 @@
 # Restructure and tidy up your code with custom fixtures
+
 > The Playwright-native approach to structure your tests.
 
 If you finished the previous exercise, you should have a login step in a test case's `beforeEach` hook [similar to this one](../../solutions/tests/02-04-test-runner.spec.js).
 
 But how can you reuse this login step for tests living in other test files?
 
-```javascript
+```typescript
 test.describe("Danube", () => {
   test.beforeEach(async ({ page }) => {
     await test.step("login", async () => {
@@ -31,16 +32,16 @@ The term "fixtures" might sound complicated but you used built-in fixtures the e
 
 Playwright uses fixtures to provide you with everything you need to control a browser in your tests.
 
-| Fixture       | Description                                                                                    |
-|---------------|------------------------------------------------------------------------------------------------|
-| `page`        | Isolated page for this test run.                                                               |
-| `context`     | Isolated context for this test run. The  `page` fixture belongs to this context as well.       |
-| `browser`     | Browsers are shared across tests to optimize resources.                                        |
-| `browserName` | The name of the browser currently running the test. Either  `chromium`, `firefox` or `webkit`. |
+| Fixture       | Description                                                                                   |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| `page`        | Isolated page for this test run.                                                              |
+| `context`     | Isolated context for this test run. The `page` fixture belongs to this context as well.       |
+| `browser`     | Browsers are shared across tests to optimize resources.                                       |
+| `browserName` | The name of the browser currently running the test. Either `chromium`, `firefox` or `webkit`. |
 
 Whenever you've accessed the `page` oject in your test cases, you've been using the provided `page` fixture.
 
-```javascript
+```typescript
 // this test case uses the pre-defined `page` and `browserName` fixture
 test("has title", async ({ page, browserName }) => {
   // your test case
@@ -55,9 +56,9 @@ When it comes to Playwright Test, there are always multiple ways of doing things
 
 Extend Playwright's `test` object.
 
-```javascript
+```typescript
 // example.spec.ts
-const base = require('@playwright/test');
+const base = require("@playwright/test");
 
 // 1. extend the provided `test` method
 const test = base.test.extend({
@@ -100,8 +101,8 @@ tests
 
 Create a new `my-setup.js` file and export your extended `test` and the `expect` object.
 
-```javascript
-const base = require('@playwright/test');
+```typescript
+const base = require("@playwright/test");
 
 exports.test = base.test.extend({
   darkPage: async ({ browser }, use) => {
@@ -114,9 +115,9 @@ exports.expect = base.expect;
 
 And import your custom `test` and `expect` in your spec files.
 
-```javascript
+```typescript
 // Require the extended `test` from your setup
-const { test, expect } = require('./my-setup');
+const { test, expect } = require("./my-setup");
 
 // all your test logic
 test.describe("A light and dark mode page", () => {
