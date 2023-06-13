@@ -44,13 +44,6 @@ In some areas, the VS Code extension is more powerful than the terminal because 
 
 Add any `expect` to the test that `Customers` text is visible
 
-```typescript
-await expect(
-  page.getByText("Customers").nth(1),
-  "Customers label should be visible"
-).toBeVisible();
-```
-
 ---
 
 ## 🏗️ Action item
@@ -58,8 +51,6 @@ await expect(
 - [ ] Record a new test for login
 - [ ] Debug your test
 - [ ] Check that 'Customers' table name is visible
-- [ ] Update trace: 'on in the config
-
 ---
 
 Let's speak more about [assertions](./03-assertions.md)!

@@ -91,3 +91,5 @@ extendedTest("Admin could search user by name", async ({ backoffice }) => {
 
 
 -----
+
+Let's speak more about [storage state and gmail](./07-storage-gep-gmail.md)!
