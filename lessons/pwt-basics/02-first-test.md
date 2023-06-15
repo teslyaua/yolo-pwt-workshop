@@ -9,7 +9,7 @@ Playwright provides invaluable "test recording" functionality called `codegen`.
 Kick off a new `codegen` session with `npx playwright codegen`.
 
 ```bash
- npx playwright codegen http://t2-lab_user-admin.t2.testenv.io/
+ npx playwright codegen http://p-lab_user-admin.p.testenv.io/users
 ```
 
 Record the login process for your user
@@ -20,7 +20,7 @@ Copy and paste into your new test file (`./tests/example.spec.js`) and rename it
 
 ## Playwright UI Mode
 
-UI Mode let's you explore, run and debug tests with a time travel experience complete with watch mode. All test files are loaded into the testing sidebar where you can expand each file and describe block to individually run, view, watch and debug each test.
+UI Mode let's you explore, run and debug tests with a time travel experience complete with watch mode=. All test files are loaded into the testing sidebar where you can expand each file and describe block to individually run, view, watch and debug each test.
 
 `Running tests in UI Mode`
 
@@ -51,6 +51,7 @@ Add any `expect` to the test that `Customers` text is visible
 - [ ] Record a new test for login
 - [ ] Debug your test
 - [ ] Check that 'Customers' table name is visible
+
 ---
 
 Let's speak more about [assertions](./03-assertions.md)!

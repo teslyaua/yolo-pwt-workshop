@@ -1,5 +1,6 @@
 # YOLO Playwright Test Workshop
-> 🔥 [Fast and reliable end-to-end testing for modern web apps | Playwright](https://playwright.dev/). 
+
+> 🔥 [Fast and reliable end-to-end testing for modern web apps | Playwright](https://playwright.dev/).
 
 ![Playwright page](./assets/pwt-homepage.png)
 
@@ -11,7 +12,7 @@ This workshop teaches you Playwright Test (PWT) essentials to setup reliable and
 
 Supportive materials and tasks are all included in the `/lessons` directory. The lessons are built on top of each other and are hands-on — **work through them at your own pace**. I'll answer questions on the way and might do the exercises, too.
 
-To follow along, all the examples will test [lab-based user backoffice](http://t2-lab_user-admin.t2.testenv.io/).
+To follow along, all the examples will test [lab-based user backoffice](http://p-lab_user-admin.p.testenv.io/users).
 
 **But feel free to test and implement functionality on other websites.**
 
@@ -20,6 +21,5 @@ To follow along, all the examples will test [lab-based user backoffice](http://t
 ## Action plan
 
 Work through the materials at your own pace. I'll cover lessons every now and then live and will answer questions on the way. Have fun!
-
 
 [Let's get started](./lessons/pwt-basics/01-getting-started.md)!
